@@ -5,6 +5,10 @@
 	--temario-active-border: #ff7300;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -14,4 +18,93 @@
 body {
 	background: #f2f2f2;
 	font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor {
+	max-width: 800px;
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 30% auto;
+}
+
+aside {
+	padding: 0 15px;
+}
+
+aside .titulo {
+	margin-bottom: 10px;
+}
+
+aside .contenedor-temario {
+	padding-top: 20px;
+	position: sticky;
+	top: 0;
+}
+
+aside .lista {
+	list-style: none;
+	border-left: 2px solid var(--color-temario);
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+aside .lista li {
+	position: relative;
+}
+
+aside .lista li a {
+	display: block;
+	color: #5a5a5a;
+	padding: 15px 10px;
+	text-decoration: none;
+	transition: .3s ease all;
+}
+
+aside .lista li.activo a,
+aside .lista li a:hover {
+	color: #000;
+}
+
+aside .lista li::before {
+	content: "";
+	display: block;
+	height: 12px;
+	width: 12px;
+	background: var(--fondo);
+	border: 2px solid var(--color-temario);
+	position: absolute;
+	left: -19px;
+	top: calc(50% - 6px);
+	transform: rotate(45deg);
+	transition: .3s ease all;
+}
+
+aside .lista li.activo::before {
+	background: var(--temario-active);
+	border: 2px solid var(--temario-active-border);
+}
+
+aside .lista li:hover::before {
+	border: 2px solid var(--temario-active-border);
+}
+
+main {
+	min-height: 2000px;
+}
+
+.card {
+	margin: 20px 0;
+	padding: 40px;
+	background: #fff;
+}
+
+@media screen and (max-width: 700px){
+	.contenedor {
+		grid-template-columns: 1fr;
+	}
+
+	aside {
+		margin-bottom: 40px;
+	}
 }
